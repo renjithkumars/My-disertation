@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace QuikMeds.Models
 {
     public class Customer
-    {12343
+    {
         public int CID { get; set; }
 
         [Required(ErrorMessage = "FirstName is required")]
