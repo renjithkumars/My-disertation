@@ -22,10 +22,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Suppliers", "Suppliers", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Informations", "Informations", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-              </div>
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </div>
     <div class="container body-content">
@@ -33,7 +34,7 @@
             <span>Your Basket: </span> @ViewBag.CartUnits
             <table>
                 @foreach (var c in ViewBag.Cart) {
-                    <tr><td>@c.Quantity x @String.Format("{0:c}", c.UnitPrice)</td><td>@c.PName</td></tr>
+                    <tr><td>@c.Quantity x (@String.Format("{0:c}", c.UnitPrice)</td><td>@c.PName</td></tr>
                 }
                 <tr>
                     <td>Total: @String.Format("{0:c}", ViewBag.CartTotalPrice)</td>

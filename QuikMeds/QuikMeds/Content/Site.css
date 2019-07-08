@@ -24,12 +24,12 @@ textarea {
 }
 
 .navbar-theme {
-    background: #2dbb9b;
+    background: #000033;
     font-weight: bold;
 }
 
     .navbar-theme a {
-        color: #fff
+        color: #fff;
     }
 
 .nav > li > a:hover, .nav > li > a:focus {
@@ -37,7 +37,7 @@ textarea {
 }
 
 .navbar-brand {
-    font-size: 1.5em
+    font-size: 1.5em;
 }
 
 /* Home page */
@@ -47,14 +47,14 @@ textarea {
     float: right;
     padding: 20px;
     background: none;
-    border: 1px solid #2dbb9b;
-    color: #2dbb9b;
+    border: 1px solid #000033;
+    color: #252625;
     letter-spacing: normal;
     position: relative;
 }
 
     .basket:hover {
-        background: #2dbb9b
+        background: #c9d6c5;
     }
 
     .basket span {
@@ -69,7 +69,7 @@ textarea {
         margin-top: 20px;
         right: -1px;
         display: none;
-        border: 1px solid #2dbb9b;
+        border: 1px solid #252625;
         background: #fff;
         color: #808080;
         z-index: 3;
@@ -78,27 +78,27 @@ textarea {
     }
 
     .basket:hover table {
-        display: table
+        display: table;
     }
 
     .basket table tr {
         transition: .3s;
         -webkit-transition: .3s;
-        padding: 20px
+        padding: 20px;
     }
 
         .basket table tr:hover {
-            opacity: .5
+            opacity: .5;
         }
 
         .basket table tr:last-child:hover {
-            opacity: 1
+            opacity: 1;
         }
 
         .basket table tr:last-child a {
             padding: 10px 20px;
             float: right;
-            color: #2dbb9b;
+            color: #252625;
             opacity: .7;
             transition: .3s;
             font-weight: bold;
@@ -108,32 +108,32 @@ textarea {
 
             .basket table tr:last-child a:hover {
                 opacity: 1;
-                background: #2dbb9b;
-                color: #fff
+                background: #e9e3f7;
+                color: #2c2144;
             }
 
     .basket table td {
         padding: 10px 20px;
     }
-
 /* Product page */
 .list-view {
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+   
 }
 
 .list-item {
     width: calc(100% / 3 - 34px);
+    background-color: rgba(70, 113, 58, 0.12);
     margin: 20px 25px;
     opacity: .8;
     transition: .3s;
     -webkit-transition: .3s;
     padding: 20px;
-    border: 1px solid #2dbb9b;
+    border: double #770322;
 }
-
     .list-item:hover {
-        opacity: 1
+        opacity: 1;
     }
 
     .list-item:nth-child(3n+1) {
@@ -144,8 +144,11 @@ textarea {
         margin-right: 0
     }
 
+
+
+
     .list-item .p-cat {
-        color: #2dbb9b;
+        color: #f0eaf9;
         display: inline-block;
         padding: 9px 0;
         font-size: .8em;
@@ -153,9 +156,9 @@ textarea {
     }
 
     .list-item .p-brand {
-        color: #2dbb9b;
-        border: 1px solid #2dbb9b;
-        font-size: .8em;
+        color: #770322;
+        border: 1px solid #a13de5;
+        font-size: 1em;
         font-weight: bold;
         padding: 7px;
         float: right;
@@ -179,10 +182,8 @@ textarea {
         vertical-align: bottom;
         margin-top: 10px;
     }
-
-
         .list-item .add-to-cart a {
-            border: 1px solid #2dbb9b;
+            border: 1px solid #019101;
             padding: 10px;
             font-weight: bold;
             font-size: .8em;
@@ -190,17 +191,17 @@ textarea {
             cursor: pointer;
             text-decoration: none;
             text-transform: uppercase;
-            color: #2dbb9b;
+            color: #566b52;
         }
 
             .list-item .add-to-cart a:hover {
-                color: #fff;
-                background: #2dbb9b;
+                color: #566b52;
+                background: #adbded;
+                border: 1px solid #ffffff;
             }
-
     .list-item .p-price {
-        color: #fff;
-        background: #2dbb9b;
+        color: #2c2144;
+        background: rgba(173, 189, 237, 0.53);
         font-weight: bold;
         font-size: .9em;
         padding: 10px;
@@ -211,17 +212,8 @@ textarea {
         font-weight: bold;
         font-size: .8em;
         vertical-align: bottom;
+        color: #019101;
     }
-
-
-.suppliers .address {
-    font-weight: bold;
-    font-size: .9em;
-}
-
-.suppliers .phone, .suppliers .email {
-    width: 100%;
-}
 
 .cart-page {
     width: 100%;
@@ -236,11 +228,11 @@ textarea {
     }
 
         .cart-page th:hover {
-            background: rgba(45, 187, 155, 0.5);
+            background: #2c2144;
         }
 
     .cart-page, .cart-page th, .cart-page td {
-        border: 1px solid #2dbb9b;
+        border: 1px solid #2c2144;
         border-collapse: collapse;
         text-align: center;
         padding: 10px;
@@ -273,3 +265,11 @@ textarea {
                 background: #ff6a00;
                 color: #fff;
             }
+.table {
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 11px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+}
