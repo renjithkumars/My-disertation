@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,6 +29,7 @@ namespace QuikMeds.Controllers
         public ActionResult Category(string catName)
         {
             List<Product> products;
+            
             if (catName == "")
             {
                 products = _ctx.Products.ToList<Product>();
@@ -43,8 +45,10 @@ namespace QuikMeds.Controllers
             else
             {
                 products = _ctx.Products.Where(p => p.Category == catName).ToList<Product>();
+               
             }
             ViewBag.Products = products;
+            
             return View("Index1");
         }
 
@@ -134,5 +138,62 @@ namespace QuikMeds.Controllers
 
             return View();
         }
+
+        public ActionResult comments(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+           
+            ViewBag.ProductId = id.Value;
+
+            List<CustomerComment> comments =_ctx.CustomerComments.Where(c=>c.PID==id) .ToList<CustomerComment>();
+            ViewBag.Comments = comments;
+           
+            List< Product> productName=_ctx.Products.Where(p=>p.PID==id).ToList<Product>();
+            ViewBag.productName = productName;
+
+           List <CustomerComment> ratings = _ctx.CustomerComments.Where(c => c.PID == id).ToList<CustomerComment>();
+            if (ratings.Count() > 0)
+            {
+                var ratingSum = ratings.Sum(c => c.Rating.Value);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
+                return View();
+            }
+            else
+            {
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
+            }
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(FormCollection form)
+        {
+            var comment = form["Comment"].ToString();
+            var articleId = int.Parse(form["ProductId"]);
+            var rating = int.Parse(form["Rating"]);
+            var email = form["Email"].ToString();
+
+            CustomerComment comments = new CustomerComment()
+            {
+                PID= articleId,
+                Comments = comment,
+                Rating = rating,
+                Email=email,
+                ThisDateTime = DateTime.Now
+            };
+
+            _ctx.CustomerComments.Add(comments);
+            _ctx.SaveChanges();
+
+            return RedirectToAction("comments", "Home", new { id = articleId });
+        }
+
     }
 }

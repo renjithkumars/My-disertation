@@ -163,7 +163,7 @@ textarea {
         padding: 7px;
         float: right;
     }
-
+   
     .list-item .p-name {
         display: block;
         font-weight: bold;
@@ -175,6 +175,12 @@ textarea {
         color: #808080;
         margin-bottom: 10px;
         display: block;
+    }
+    .list-item .p-comments {
+        font-size: 1em;
+        font-weight: bold;
+        padding: 7px;
+        float: right;
     }
 
     .list-item .add-to-cart {
@@ -272,4 +278,59 @@ textarea {
     border-width: 1px;
     border-color: #999999;
     border-collapse: collapse;
+}
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.commentBox {
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.starFade {
+    background-image: url('/Images/StarFade.gif');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.starFadeN {
+    background-image: url('/Images/StarFade.gif');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+}
+
+.starGlow {
+    background-image: url('/Images/starglow.gif');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.starGlowN {
+    background-image: url('/Images/starglow.gif');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+}
+.rating {
+    color: #770322;
+    border: 1px solid #a13de5;
+    font-size: 5em;
+    font-weight: bold;
+    padding: 7px;
+    float: left;
 }

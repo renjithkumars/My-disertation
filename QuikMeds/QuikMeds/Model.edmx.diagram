@@ -16,6 +16,9 @@
         <AssociationConnector Association="CTXModel.FK_Order_Products_Products" ManuallyRouted="false" />
         <AssociationConnector Association="CTXModel.FK_Products_Suppliers" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CTXModel.Information" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CTXModel.CustomerComment" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="CTXModel.sysdiagram" Width="1.5" PointX="7.375" PointY="7.75" />
+        <AssociationConnector Association="CTXModel.FK_ShoppingCartData_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
