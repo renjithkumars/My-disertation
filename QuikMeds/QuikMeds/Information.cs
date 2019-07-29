@@ -14,11 +14,11 @@ namespace QuikMeds
     
     public partial class Information
     {
-        public string Category { get; set; }
+        public int PID { get; set; }
         public string Ussage { get; set; }
         public string Side_Effects { get; set; }
         public string Additional_information { get; set; }
-        public int PID { get; set; }
+        public string Category { get; set; }
         public Nullable<int> SID { get; set; }
     }
 }

@@ -20,5 +20,7 @@ namespace QuikMeds
         public System.DateTime ThisDateTime { get; set; }
         public int PID { get; set; }
         public Nullable<int> Rating { get; set; }
+    
+        public virtual Product Product { get; set; }
     }
 }

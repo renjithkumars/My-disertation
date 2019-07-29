@@ -130,7 +130,7 @@ C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\bin\Microsoft.AI.D
 C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\bin\Microsoft.AI.Web.xml
-C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\obj\Debug\QuikMeds.csprojResolveAssemblyReference.cache
 C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\obj\Debug\QuikMeds.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\obj\Debug\QuikMeds.dll
 C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\obj\Debug\QuikMeds.pdb
+C:\Users\Lenovo\source\repos\My-disertation\QuikMeds\QuikMeds\obj\Debug\QuikMeds.csprojResolveAssemblyReference.cache

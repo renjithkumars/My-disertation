@@ -13,14 +13,14 @@ namespace QuikMeds.Controllers
         public ActionResult Index()
         {
 
-            List<Product> products = _ctx.Products.ToList<Product>();
-            ViewBag.Products = products;
+
+            ViewBag.Products = getdetails();
             return View();
         }
         public ActionResult Index1()
         {
-            List<Product> products = _ctx.Products.ToList<Product>();
-            ViewBag.Products = products;
+
+            ViewBag.Products = getdetails();
             return View();
 
         }
@@ -29,10 +29,9 @@ namespace QuikMeds.Controllers
         public ActionResult Category(string catName)
         {
             List<Product> products;
-            
+
             if (catName == "")
             {
-                products = _ctx.Products.ToList<Product>();
                 try
                 {
                     return RedirectToAction("Index");
@@ -44,11 +43,11 @@ namespace QuikMeds.Controllers
             }
             else
             {
-                products = _ctx.Products.Where(p => p.Category == catName).ToList<Product>();
-               
+                products = _ctx.Products.Where(p => p.Category == catName).OrderBy(p => p.Description).ToList<Product>();
+
             }
             ViewBag.Products = products;
-            
+
             return View("Index1");
         }
 
@@ -57,7 +56,7 @@ namespace QuikMeds.Controllers
             List<Product> products;
             if (discription == "")
             {
-                products = _ctx.Products.ToList<Product>();
+                products = _ctx.Products.OrderBy(p => p.Category).ToList<Product>();
             }
             else
             {
@@ -115,18 +114,18 @@ namespace QuikMeds.Controllers
             List<Information> product_details = _ctx.Information.ToList<Information>();
             ViewBag.Products = product_details;
             return View();
-            
+
         }
         public ActionResult Information(string discription)
         {
             List<Information> product_details;
             if (discription == "")
             {
-               product_details = _ctx.Information.ToList<Information>();
+                product_details = _ctx.Information.ToList<Information>();
             }
             else
             {
-               product_details = _ctx.Information.Where(i => i.Category==discription).ToList<Information>();
+                product_details = _ctx.Information.Where(i => i.Category == discription).ToList<Information>();
             }
             ViewBag.Products = product_details;
             return View("Informations");
@@ -145,16 +144,16 @@ namespace QuikMeds.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-           
+
             ViewBag.ProductId = id.Value;
 
-            List<CustomerComment> comments =_ctx.CustomerComments.Where(c=>c.PID==id) .ToList<CustomerComment>();
+            List<CustomerComment> comments = _ctx.CustomerComments.Where(c => c.PID == id).ToList<CustomerComment>();
             ViewBag.Comments = comments;
-           
-            List< Product> productName=_ctx.Products.Where(p=>p.PID==id).ToList<Product>();
+
+            List<Product> productName = _ctx.Products.Where(p => p.PID == id).ToList<Product>();
             ViewBag.productName = productName;
 
-           List <CustomerComment> ratings = _ctx.CustomerComments.Where(c => c.PID == id).ToList<CustomerComment>();
+            List<CustomerComment> ratings = _ctx.CustomerComments.Where(c => c.PID == id).ToList<CustomerComment>();
             if (ratings.Count() > 0)
             {
                 var ratingSum = ratings.Sum(c => c.Rating.Value);
@@ -182,10 +181,10 @@ namespace QuikMeds.Controllers
 
             CustomerComment comments = new CustomerComment()
             {
-                PID= articleId,
+                PID = articleId,
                 Comments = comment,
                 Rating = rating,
-                Email=email,
+                Email = email,
                 ThisDateTime = DateTime.Now
             };
 
@@ -195,5 +194,32 @@ namespace QuikMeds.Controllers
             return RedirectToAction("comments", "Home", new { id = articleId });
         }
 
+        public static List<Product> getdetails()
+        {
+            CTXEntities _ctx = new CTXEntities();
+            List<Product> products = _ctx.Products.OrderBy(p => p.Category).ToList<Product>();
+            foreach (Product p in products)
+            {
+                int? sum = 0;
+                int? average = 0;
+                if (p.CustomerComments.Count > 0)
+                {
+                    foreach (CustomerComment r in p.CustomerComments)
+                    {
+                        sum += r.Rating;
+                    }
+                    if (sum > 0)
+                    {
+                        average = sum / p.CustomerComments.Count;
+                    }
+                }
+                p.Average = average;
+
+            }
+            products = products.OrderByDescending(x => x.Average).ToList<Product>();
+            return products;
+        }
+
     }
+
 }
